@@ -1,0 +1,299 @@
+//FINAL GAME include help and logic
+
+
+#include<stdio.h>
+#include<string.h>
+ char name[20],item[20],item1[20];
+void main()
+{
+ void help();
+ char a[10][20],l1[10][10],l2[10][10],l3[10][10],input[20],l4[10][10],choose,ch1,ch2,ch3,ch4,ans[10];
+ int i,j=0,k=0,temp,val,e=0,b=0,c=0,d=0,t,sum=0,index=0,g,z;
+ clrscr();
+ printf("\n******************************************************************************\n\n\t\t               MIND READER GAME\n\t\t               ----------------\n\n******************************************************************************\n\n");
+ printf("\n\t                   WELCOME TO MIND READER GAME...");
+ printf("\n\n\n Enter your name:");
+ scanf("%s",name);
+ printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HAI!!! %s~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\t\t\t    Let's START the game !!!\n\n\n\n                      %s!!!Press any key to start the game.....",name,name);
+ getch();
+ clrscr();
+ printf("\n*****************************************************************************\n\t\t               MIND READER GAME\n\t\t               ----------------\n*****************************************************************************");
+ printf("\n %s !!! Do you like what type of items (Fruits,Flowers,Foods,etc....) :\n",name);
+ scanf("%s",item);
+ for(g=0;item[g]!='\0';g++)
+ item1[g]=item[g];
+ item1[--g]='\0';
+ printf("\n %s !!! Please enter ten %s names:\n",name,item1);
+ for(i=0;i<10;i++)
+ {
+ printf("\n Enter the %s name%d:",item1,i+1);
+ scanf("%s",&input);
+ x:for(z=0;z<i;z++)
+ {
+ if(strcmp(a[z],input)==0)
+ {
+ printf("\n Sorry %s!!! %s is already availble at %d position in %s list.",name,input,z+1,item);
+ printf("\n Re-enter the %s name%d:",item1,i+1);
+ scanf("%s",&input);
+ goto x;
+ }
+ }
+ strcpy(a[i],input);
+ }
+ printf("\n============================================================================");
+ printf("\n\n                    Thanks %s for entered %s to %s list.....",name,item1,item);
+ printf("\n\n ~~~~~~~~~~~~~~~~~~~~~~~%s!!! press any key~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",name);
+ getch();
+ clrscr();
+ printf("\n*****************************************************************************\n\t\t               MIND READER GAME\n\t\t               ----------------\n*****************************************************************************");
+ printf("\n\n %s list:\n",strupr(item));
+ for(i=0;i<10;i++)
+ {
+ printf("\n%d).",i+1);
+ printf("%s",a[i]);
+ }
+ printf("\n============================================================================");
+ printf("\n\n %s!!! Now select any particular %s from this list and keep in your mind.",name,item1);
+ getch();
+ for(i=9;i>=6;i--)
+ {
+ temp=i+1;
+
+ if(temp>=4)
+ {
+ strcpy(l4[e],a[j]);e++;
+ temp=temp-4;
+ }
+ if(temp>=3)
+ {
+ strcpy(l3[b],a[j]);b++;
+  temp=temp-3;
+ }
+ if(temp>=2)
+ {
+ strcpy(l2[c],a[j]);c++;
+ temp=temp-2;
+ }
+ if(temp>=1)
+ {
+ strcpy(l1[d],a[j]);d++;
+ temp=temp-1;
+ }
+ j++;
+ }
+ for(i=5;i>=3;i--)
+ {
+ temp=i+1;
+ if(temp==5)
+ {
+ strcpy(l4[e],a[j]);e++;
+ temp=temp-4;
+ }
+ if(temp>=3)
+ {
+ strcpy(l3[b],a[j]);b++;
+ temp=temp-3;
+ }
+ if(temp>=2)
+  {
+  strcpy(l2[c],a[j]);c++;
+    temp=temp-2;
+  }
+  if(temp>=1)
+  {
+   strcpy(l1[d],a[j]);d++;
+   temp=temp-1;
+  }
+  j++;
+  }
+ for(i=2;i>=0;i--)
+  {
+  temp=i+1;
+  if(temp>=2)
+  {
+  strcpy(l2[c],a[j]);c++;
+  temp=temp-2;
+  }
+  if(temp>=1)
+  {
+  strcpy(l1[d],a[j]);d++;
+  temp=temp-1;
+  }
+  j++;
+  }
+  a1:clrscr();
+  printf("\n*****************************************************************************\n\t\t               MIND READER GAME\n\t\t               ----------------\n*****************************************************************************");
+  printf("\n list1:\n ------");
+  for(k=0;k<d;k++)
+  printf("\n %s ",l1[k]);
+  printf("\n============================================================================");
+  printf("\n\n %s !!! Do you want any help press 'y' otherwise press 'n':",name);
+  scanf(" %c",&choose);
+  if((choose=='y')||(choose=='Y'))
+  {
+  help();
+  goto a1;
+  }
+  printf("\n Is that %s name in above list (y/n):",item1);
+  scanf(" %c",&ch1);
+  if((ch1=='y')||(ch1=='Y'))
+  sum=sum+1;
+  b1:clrscr();
+  printf("\n*****************************************************************************\n\t\t               MIND READER GAME\n\t\t               ----------------\n*****************************************************************************");
+  printf("\n list2:\n ------");
+  for(k=0;k<c;k++)
+  printf("\n %s ",l2[k]);
+  printf("\n============================================================================");
+  printf("\n\n %s !!! Do you want any help press 'y' otherwise press 'n':",name);
+  scanf(" %c",&choose);
+  if((choose=='y')||(choose=='Y'))
+  {
+  help();
+  goto b1;
+  }
+  printf("\n\n Is that %s name in the above list (y/n):",item1);
+  scanf(" %c",&ch2);
+  if((ch2=='y')||(ch2=='Y'))
+ sum=sum+2;
+ c1:clrscr();
+ printf("\n*****************************************************************************\n\t\t               MIND READER GAME\n\t\t               ----------------\n*****************************************************************************");
+ printf("\n list3:\n ------");
+ for(k=0;k<b;k++)
+ printf("\n %s ",l3[k]);
+ printf("\n============================================================================");
+ printf("\n\n %s !!! Do you want any help press 'y' otherwise press 'n':",name);
+  scanf(" %c",&choose);
+  if((choose=='y')||(choose=='Y'))
+  {
+  help();
+  goto c1;
+  }
+ printf("\n\n Is that %s name in the above list (y/n):",item1);
+ scanf(" %c",&ch3);
+  if((ch3=='y')||(ch3=='Y'))
+ sum=sum+3;
+ d1:clrscr();
+ printf("\n*****************************************************************************\n\t\t               MIND READER GAME\n\t\t               ----------------\n*****************************************************************************");
+ printf("\n list4:\n ------");
+ for(k=0;k<e;k++)
+ printf("\n %s ",l4[k]);
+ printf("\n============================================================================");
+ printf("\n\n %s !!! Do you want any help press 'y' otherwise press 'n':",name);
+  scanf(" %c",&choose);
+  if((choose=='y')||(choose=='Y'))
+  {
+  help();
+  goto d1;
+  }
+ printf("\n\n Is that %s name in the above list (y/n):",item1);
+ scanf(" %c",&ch4);
+ printf("\n\n	        %s !!! Press any key to know the result...",name);
+ getch();
+ if((ch4=='y')||(ch4=='Y'))
+ sum=sum+4;
+ clrscr();
+ printf("\n******************************************************************************\n\n\t\t               MIND READER GAME\n\t\t               ----------------\n\n*****************************************************************************\n\n\n");
+ printf("\n RESULT:\n ------");
+ printf("\n\n\n Thanks %s !!! for select the %s from these list.\n",name,item);
+ printf("\n %s!!! you keep ",name);
+ switch(sum)
+ {
+ case 1:printf("%s",strupr(a[9]));strcpy(ans,a[9]);index=1;break;
+ case 2:printf("%s ",strupr(a[8]));strcpy(ans,a[8]);index=2;break;
+ case 3:printf("%s ",strupr(a[7]));strcpy(ans,a[7]);index=3;break;
+ case 4:printf("%s ",strupr(a[6]));strcpy(ans,a[6]);index=4;break;
+ case 5:printf("%s ",strupr(a[5]));strcpy(ans,a[5]);index=5;break;
+ case 6:printf("%s ",strupr(a[4]));strcpy(ans,a[4]);index=6;break;
+ case 7:printf("%s ",strupr(a[3]));strcpy(ans,a[3]);index=7;break;
+ case 8:printf("%s ",strupr(a[2]));strcpy(ans,a[2]);index=8;break;
+ case 9:printf("%s ",strupr(a[1]));strcpy(ans,a[1]);index=9;break;
+ case 10:printf("%s ",strupr(a[0]));strcpy(ans,a[0]);index=10;break;
+ }
+ printf(" in your mind.\n");
+ printf("\n\n ~~~~~~~~~~~~~~~~~~~~~~~~~ Hope you like this game ~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t     %s !!! press any to know BEHIND LOGIC",name);
+ getch();
+ clrscr();
+ printf("\n*****************************************************************************\n\t\t           BEHIND LOGIC OF MIND READER GAME\n\t\t           --------------------------------\n*****************************************************************************");
+ printf("\n\n Initially we have to provide values (from 1 to 10) to %s.",item);
+ printf("\n\n S.NUMBER   ASSUMPTION VALUES   %s\n --------   -----------------   ----------",strupr(item));
+ j=10;
+ for(i=0;i<10;i++)
+ {
+ if(i==9)
+ printf("\n  %d         %d                   %s",i+1,j,a[i]);
+ else if(j==10)
+ printf("\n  %d          %d                  %s",i+1,j,a[i]);
+ else
+ printf("\n  %d          %d                   %s",i+1,j,a[i]);
+ j--;
+ }
+ printf("\n---------------------------------------------------------------------------");
+ printf("\n\n %s!!!initially you choose %s from the %s list and keep in your mind.",name,ans,item);
+ printf("\n So we have to take corresponding assumption value of %s.\n Therefore equivalent assumption value of %s is %d.",ans,ans,index);
+ getch();
+ clrscr();
+ printf("\n*****************************************************************************\n\t\t           BEHIND LOGIC OF MIND READER GAME\n\t\t           --------------------------------\n*****************************************************************************");
+ printf("\n\n                   Now we start to count(Initially count is zero) based on       your selection %s availability in four lists",ans);
+ sum=0;
+ if((ch1=='y')||(ch1=='Y'))
+ {
+ sum=sum+1;
+ printf("\n               #  In LIST1, %s is AVAILABLE. So we have to take 1 and add      to count then move to next list.",ans);
+ }
+ else
+ printf("\n               #  In LIST1, %s is NOT AVAILABLE. So move to next list.",ans);
+ if((ch2=='y')||(ch2=='Y'))
+ {
+ sum=sum+2;
+ printf("\n               #  In LIST2, %s is AVAILABLE. So we have to take 2 and add      to count then move to next list.",ans);
+ }
+ else
+ printf("\n               #  In LIST2, %s is NOT AVAILABLE. So move to next list.",ans);
+ if((ch3=='y')||(ch3=='Y'))
+ {
+ sum=sum+3;
+ printf("\n               #  In LIST3, %s is AVAILABLE. So we have to take 3 and add      to count then move  to next list.",ans);
+ }
+ else
+ printf("\n               #  In LIST3, %s is NOT AVAILABLE. So move to next list.",ans);
+ if((ch4=='y')||(ch4=='Y'))
+ {
+ sum=sum+4;
+ printf("\n               #  In LIST4, %s is AVAILABLE. So we have to take 4 and add      to count then move to next list.",ans);
+ }
+ else
+
+ printf("\n               #  In LIST4, %s is NOT AVAILABLE. So move to next list.",ans);
+ printf("\n               #  Now we get assumption value as %d and find corresponding       %s for assumption value.",sum,ans);
+ printf("\n               #  Finally Display  %s .",ans);
+ printf("\n               #  In this game, all the four lists were created DYNMICALLY       (based on %s/s input values).",name);
+ printf("\n============================================================================");
+ getch();
+ clrscr();
+ printf("\n*****************************************************************************\n\t\t           ABOUT MIND READER GAME\n\t\t           -----------------------\n*****************************************************************************");
+ printf("\n\n * MIND READER GAME was developed in C.\n\n * This game was developed using TURBO C editor.");
+ printf("\n\n * It uses ARRAY data structure for STORING %s list.",item);
+ printf("\n           ======");
+ printf("\n\n Developed by\n\n T.Maharani (MCA I year).\n Thiagarajar College Of Engineering. ");
+ printf("\n Blog:(To visit for getting this game coding).");
+ printf("\n\n\n --------------------------THANK YOU FOR PLAY THIS GAME---------------------");
+ printf("\n\n\n******************************THE END***************************************");
+ getch();
+}
+ void help()
+ {
+ clrscr();
+ printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n                                     HELP\n                                     =====\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+ printf("\n\n\t           HAI %s !!! WELCOME TO MIND READER GAME HELP.....",name);
+ printf("\n\n                   # %s inititally you choose %s as topic for your list.\n\n                   # Then you gave ten %s names and keep any one particular \n%s name in your mind.\n                   # %s !!! from list1, you will search that particular\n%s name is available or not.\n                         @ If available ,then %s please enter \"yes\".\n                         @ Otherwise enter \"no\".",name,item,item1,item1,name,item1,name);
+ printf("\n                   # %s !!! from list2, you will search that particular\n%s name is available or not.\n                         @ If available ,then %s please enter \"yes\".\n                         @ Otherwise enter \"no\".",name,item1,name,item1);
+ printf("\n\n^^^^^^^^^^^^^^^^^^^^^^^%s!!! press any key to move next^^^^^^^^^^^^^^^^^^^^^^^^^");
+ getch();
+ clrscr();
+ printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n                                     HELP\n                                     =====\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+ printf("\n                   # %s !!! in list3, you will search that particular\n%s name is available or not.\n                         @ If available ,then %s please enter \"yes\".\n                         @ Otherwise enter \"no\".",name,item1,name,item1);
+ printf("\n                   # %s !!! in list4, you will search that particular\n%s name is available or not.\n                         @ If available ,then %s please enter \"yes\".\n                         @ Otherwise enter \"no\".",name,item1,name,item1);
+ printf("\n\n                Hope this informations are help ful to you %s .....",strupr(name));
+ printf("\n\n^^^^^^^^^^^^^^^^^^^^^^^%s!!! press any key to exit from help^^^^^^^^^^^^^^^^^^^^^^");
+ getch();
+ }
